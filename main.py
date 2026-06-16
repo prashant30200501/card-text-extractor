@@ -2,6 +2,8 @@ import cv2
 
 camera = cv2.VideoCapture(0)
 
+image_count = 1
+
 while True:
     success, frame = camera.read()
 
@@ -16,8 +18,11 @@ while True:
     key = cv2.waitKey(1)
 
     if key ==ord('s'):
-        cv2.imwrite("card.jpg",frame)
-        print("image saved")
+        filename = f"images/card_{image_count}.jpg"
+        cv2.imwrite(filename,frame)
+        print(f"saved: {filename}")
+        image_count += 1
+      
     
     
 
